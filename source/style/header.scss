@@ -1,4 +1,48 @@
 // header styling
 header {
-      
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  height:97px;
+  padding-top:23px;
+  background-color:#f8f8f8;
+  z-index:10;
+  .container {
+    position:relative;
+    border-top:5px solid #bebdb9;
+  }
+  h1 {
+    position:absolute;
+    top:18px;
+    left:25px;
+    a {
+      display:block;
+      width:167px;
+      height:38px;
+      background:url("../image/common/logo.png") no-repeat center center;
+      text-indent:-9999px;
+    }
+  }
+
+  // gnb
+  #gnb {
+    @include fontNone;
+    ul {
+      display:flex;
+      justify-content:flex-end;
+      padding:0 9.375% 0 0;
+      li {
+        padding:0 4.2%;
+        a {
+          display:block;
+          height:69px;
+          line-height:69px;
+          color:#bbb;
+          font-family:$font-en-base;
+          font-size:rem(16);
+        }
+      }
+    }
+  }
 }

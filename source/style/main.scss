@@ -1,5 +1,79 @@
 // main
 #main {
+
+  // transition
+  $transition1:all .7s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  > section[class*="section"] {
+    overflow: hidden;
+  }
   
+  // cover
+  .cover {
+    position:absolute;
+    top:0;
+    right:-732px;
+    width:2600px;
+    height:900px;
+    background:url("../image/main/cover_bg.png") no-repeat right 0;
+    z-index:9;
+    transition:$transition1;
+    .title-box {
+      position:absolute;
+      top:50%;
+      right:560px;
+      transition:$transition1;
+      transition-delay: .1s;
+      span {
+        position:absolute;
+        top:60px;
+        left:430px;
+        opacity:0;
+        transition:$transition1;
+        transition-delay: .2s;
+      }
+    }
+
+    // active
+    &.active {
+      right:120px;
+      .title-box {
+        right:660px;
+        span {
+          top:35px;
+          opacity:1;
+        }
+      }
+    }
+  }
+
+  // section01
+  .section01 {
+    position:relative;
+    height:900px;
+    background:url("../image/main/section01_bg.png") repeat-x 0 bottom;
+    &:before {
+      content:'';
+      display:block;
+      position:absolute;
+      top:0;
+      left:0;
+      right:0;
+      height:200px;
+      background-color:#f0f0ee;
+    }
+    .image-1 {
+      position:absolute;
+      top:175px;
+      left:50%;
+      margin-left:144px;
+    }
+    .image-2 {
+      position:absolute;
+      bottom:48px;
+      left:50%;
+      margin-left:508px;
+    }
+  }
 
 }
