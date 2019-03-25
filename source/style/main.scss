@@ -1,11 +1,29 @@
 // main
 #main {
 
+  text-align:left;
   // transition
   $transition1:all .7s cubic-bezier(0.075, 0.82, 0.165, 1);
 
   > section[class*="section"] {
+    position:relative;
     overflow: hidden;
+    &:after {
+      content:'';
+      display:block;
+      position:absolute;
+      top:0;
+      left:50%;
+      bottom:0;
+      width:1440px;
+      margin-left:-720px;
+      box-shadow:0 0 15px 0 rgba(0,0,0,0.2);
+      z-index:10;
+    }
+  }
+
+  .container {
+    position:relative;
   }
   
   // cover
@@ -49,7 +67,6 @@
 
   // section01
   .section01 {
-    position:relative;
     height:900px;
     background:url("../image/main/section01_bg.png") repeat-x 0 bottom;
     &:before {
@@ -73,6 +90,103 @@
       bottom:48px;
       left:50%;
       margin-left:508px;
+    }
+  }
+
+  // section02
+  .section02 {
+    height:1800px;
+    background-color:#f3f7f8;
+    &:before {
+      content:'';
+      display:block;
+      position:absolute; 
+      top:0;
+      left:0;
+      right:0;
+      height:1176px;
+      background-color:#cdcfcf;
+    }
+    .text-box {
+      padding:195px 0 0 142px;
+      h2 {
+        color:#fdfee7;
+        font-family:$font-en-base;
+        font-size:rem(72);
+        font-weight:700;
+        letter-spacing:-3px;
+        text-transform:uppercase;
+        &:first-line {
+          color:#d4ffd2;
+        }
+      }
+      .list-1 {
+        padding-top:10px;
+        li {
+          margin-top:35px;
+          p {
+            display:inline-block;
+            color:#f2f5f5;
+            font-family:$font-en-base;
+            font-size:rem(40);
+            font-weight:700;
+            line-height:0.9;
+            letter-spacing:2px;
+            border-bottom:3px solid #f2f5f5;
+          }
+        }
+      }
+      .list-2 {
+        display:flex;
+        justify-content:space-between;
+        width:300px;
+        padding-top:50px;
+        li {
+          width:84px;
+          text-align:center;
+          .image {
+            height:90px;
+          }
+          .text {
+            color:#f3f7f8;
+            font-size:rem(15);
+          }
+        }
+      }
+    }
+    .text-box-2 {
+      position:absolute;
+      top:1343px;
+      left:145px;
+      p {
+        display:block;
+        color:#969898;
+        font-size:rem(21);
+        line-height:1.9;
+        .letter {
+          display:inline-block;
+        }
+      }
+    }
+    .image-1 {
+      position:absolute;
+      top:173px;
+      right:135px;
+      z-index:2;
+    }
+    .image-2 {
+      position:absolute;
+      top:783px;
+      left:458px;
+    }
+  }
+
+  // section03
+  .section03 {
+    height:900px;
+    background-color:#5e5e5e;
+    .container {
+      background:url("../image/main/section03_bg") no-repeat center center;
     }
   }
 
