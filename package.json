@@ -4,6 +4,7 @@
   "description": "plantbox site builder",
   "main": "gulpfile.js",
   "dependencies": {
+    "gulp-preprocess": "^3.0.2",
     "jquery": "^3.3.1"
   },
   "devDependencies": {

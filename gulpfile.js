@@ -44,6 +44,7 @@ var gulp = require('gulp'),
   // ftp
   ftp = require('gulp-ftp'),
   
+  // cache
   cachebust = require('gulp-cache-bust');
 
 // 환경설정
@@ -60,6 +61,12 @@ var path = {
   deploy: 'deploy'
 };
 
+gulp.task('env:dev', function() {
+  process.env.NODE_ENV = 'development';
+});
+gulp.task('env:pro', function() {
+  process.env.NODE_ENV = 'production';
+});
 
 // 도움말
 gulp.task('help', function () {
@@ -296,6 +303,7 @@ gulp.task('html', function () {
       annotations: false,
       verbose: false
     })) // default options
+    .pipe(preprocess({context: { ENV: envNODE_ENV(), DEBUG: true}})) //To set environment variables in-line
     .pipe(removeHtmlComment())
     .pipe(cachebust({type: 'timestamp'})) // 캐시 삭제
     .pipe(gulp.dest(path.deploy))
@@ -332,7 +340,7 @@ gulp.task('ftp', function () {
 gulp.task('default', ['help']);
 
 gulp.task('local', function () {
-  runSequence('clean', 'copy:image', 'convert:sass:sourcemap', 'copy:conf', 'html', ['copy:js', 'copy:node_modules'], ['connect', 'watch']);
+  runSequence('clean', 'env:dev', 'copy:image', 'convert:sass:sourcemap', 'copy:conf', 'html', ['copy:js', 'copy:node_modules'], ['connect', 'watch']);
 });
 
 
@@ -341,5 +349,5 @@ gulp.task('local', function () {
 // });
 
 gulp.task('deploy', function () {
-  runSequence('clean', 'copy:image', 'convert:sass', 'copy:conf', 'html', ['copy:js', 'copy:node_modules'], 'release');
+  runSequence('clean', 'env:pro', 'copy:image', 'convert:sass', 'copy:conf', 'html', ['copy:js', 'copy:node_modules'], 'release');
 });
