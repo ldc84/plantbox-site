@@ -47,6 +47,9 @@ var gulp = require('gulp'),
   // cache
   cachebust = require('gulp-cache-bust');
 
+  // NODE_ENV
+  preprocess = require('gulp-preprocess');
+
 // 환경설정
 var path = {
   source: {
@@ -67,6 +70,11 @@ gulp.task('env:dev', function() {
 gulp.task('env:pro', function() {
   process.env.NODE_ENV = 'production';
 });
+
+function envNODE_ENV(){
+  var result = process.env.NODE_ENV === 'production' ? 'production' : 'development' ;
+  return result;
+}
 
 // 도움말
 gulp.task('help', function () {
